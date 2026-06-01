@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GitDeck — The complete Git command cheat sheet. Master every git command with descriptions, flags, examples, and tips. Perfect reference for developers worldwide.">
+<meta name="keywords" content="git cheat sheet, git commands, git reference, git tutorial, version control, git init, git commit, git branch, git merge, git rebase, git stash, developer tools">
+<meta name="author" content="GitDeck">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="IN-AP">
+<meta name="geo.placename" content="guntur, Andhra Pradesh, India">
+<meta property="og:title" content="GitDeck — Complete Git Command Reference">
+<meta property="og:description" content="The most comprehensive Git cheat sheet. Every command explained with examples, flags, and pro tips.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GitDeck — Complete Git Command Reference">
+<meta name="twitter:description" content="Every Git command explained. From init to bisect.">
+<link rel="canonical" href="https://gitdeck.dev/">
+<title>GitDeck — Complete Git Command Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GitDeck",
+  "description": "Complete Git command cheat sheet and reference for developers",
+  "url": "https://hitdeck.dev",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://gitdeck.dev/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<!--favicon-->
+ <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+  <link rel="shortcut icon" href="/favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+</head>
+<body>
+
+<a class="sr-only" href="#main-content" style="position:absolute;left:-9999px;">Skip to main content</a>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo" aria-label="GitDeck home">
+    <div class="logo-icon" aria-hidden="true"><i class="ti ti-git-branch"></i></div>
+    <span class="logo-text">Git<em>Deck</em></span>
+  </a>
+  <div class="nav-search-wrap" role="search">
+    <i class="ti ti-search" aria-hidden="true"></i>
+    <input type="search" id="search-input" placeholder="Search commands, flags, concepts…" aria-label="Search git commands" autocomplete="off" spellcheck="false">
+    <button class="search-clear" id="search-clear" aria-label="Clear search"><i class="ti ti-x"></i></button>
+  </div>
+  <div class="nav-actions">
+    <span class="search-count" id="search-count" aria-live="polite" aria-atomic="true"></span>
+    <button class="btn-icon" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+      <i class="ti ti-moon" id="theme-icon"></i>
+    </button>
+    <a href="https://git-scm.com/docs" target="_blank" rel="noopener noreferrer" class="btn-icon" title="Official Git Docs" aria-label="Official Git documentation (opens in new tab)">
+      <i class="ti ti-external-link"></i>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" aria-labelledby="site-title">
+  <h1 id="site-title">Every Git command,<br><em>beautifully explained.</em></h1>
+  <p>The complete reference for Git — from init to bisect. Copy commands, explore flags, and ship faster.</p>
+  <div class="stats-row" aria-label="Site statistics">
+    <div class="stat-item"><i class="ti ti-terminal-2" aria-hidden="true"></i><strong id="total-count">65+</strong> commands</div>
+    <div class="stat-item"><i class="ti ti-category" aria-hidden="true"></i><strong>9</strong> categories</div>
+    <div class="stat-item"><i class="ti ti-bolt" aria-hidden="true"></i>Copy-ready examples</div>
+    <div class="stat-item"><i class="ti ti-books" aria-hidden="true"></i>Official source</div>
+  </div>
+</header>
+
+<!-- CATEGORY FILTER -->
+<div class="category-bar" role="navigation" aria-label="Category filters">
+  <div class="category-scroll" role="list">
+    <button class="cat-btn active" data-cat="all" role="listitem"><i class="ti ti-layout-grid" aria-hidden="true"></i> All</button>
+    <button class="cat-btn" data-cat="setup" role="listitem"><i class="ti ti-settings" aria-hidden="true"></i> Setup &amp; Config</button>
+    <button class="cat-btn" data-cat="init" role="listitem"><i class="ti ti-plus" aria-hidden="true"></i> Init &amp; Clone</button>
+    <button class="cat-btn" data-cat="snap" role="listitem"><i class="ti ti-camera" aria-hidden="true"></i> Snapshot</button>
+    <button class="cat-btn" data-cat="branch" role="listitem"><i class="ti ti-git-branch" aria-hidden="true"></i> Branching</button>
+    <button class="cat-btn" data-cat="merge" role="listitem"><i class="ti ti-git-merge" aria-hidden="true"></i> Merge &amp; Rebase</button>
+    <button class="cat-btn" data-cat="remote" role="listitem"><i class="ti ti-cloud-upload" aria-hidden="true"></i> Remote</button>
+    <button class="cat-btn" data-cat="undo" role="listitem"><i class="ti ti-arrow-back-up" aria-hidden="true"></i> Undo</button>
+    <button class="cat-btn" data-cat="inspect" role="listitem"><i class="ti ti-eye" aria-hidden="true"></i> Inspect</button>
+    <button class="cat-btn" data-cat="advanced" role="listitem"><i class="ti ti-wand" aria-hidden="true"></i> Advanced</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main id="main-content" class="main-content">
+<div id="no-results" class="no-results" role="alert" aria-live="polite">
+  <i class="ti ti-search-off" aria-hidden="true"></i>
+  <h3>No commands found</h3>
+  <p>Try a different keyword — command name, flag, or description.</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION: SETUP & CONFIG -->
+<!-- ============================================================ -->
+<section class="cmd-section" data-section="setup" aria-labelledby="sec-setup">
+  <div class="section-header">
+    <i class="ti ti-settings" style="color:var(--tag-config-t)" aria-hidden="true"></i>
+    <h2 id="sec-setup">Setup &amp; Configuration</h2>
+    <span class="cmd-count"></span>
+  </div>
+  <div class="cmd-grid">
+
+    <article class="cmd-card" data-cat="setup" data-search="git config set name email user global local">
+      <span class="cat-tag tag-config">Config</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-config);color:var(--tag-config-t)"><i class="ti ti-user" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git config</div>
+          <div class="cmd-tagline">Set configuration values</div>
+        </div>
+      </div>
+      <p class="cmd-body">Get and set repository or global Git options. Configure your identity, editor, aliases, and behaviors. Settings cascade: local → global → system.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--global</span>
+        <span class="flag-chip">--local</span>
+        <span class="flag-chip">--system</span>
+        <span class="flag-chip">--list</span>
+        <span class="flag-chip">--unset</span>
+      </div>
+      <div class="cmd-example">git config --global user.name "Ada Lovelace"<br>git config --global user.email "ada@example.com"<br>git config --list <span class="comment"># view all settings</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Use --global for machine-wide settings, omit for repo-only.</span>
+        <button class="copy-btn" data-copy='git config --global user.name "Your Name"'><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="setup" data-search="git alias shortcut command abbreviation">
+      <span class="cat-tag tag-config">Config</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-config);color:var(--tag-config-t)"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git config alias</div>
+          <div class="cmd-tagline">Create command shortcuts</div>
+        </div>
+      </div>
+      <p class="cmd-body">Define abbreviations for commonly used commands. Aliases reduce keystrokes and allow you to create custom compound commands.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--global</span>
+        <span class="flag-chip">alias.*</span>
+      </div>
+      <div class="cmd-example">git config --global alias.st status<br>git config --global alias.co checkout<br>git config --global alias.br branch<br>git config --global alias.lg "log --oneline --graph"</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Prefix with <code>!</code> to run shell commands as aliases.</span>
+        <button class="copy-btn" data-copy='git config --global alias.st status'><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION: INIT & CLONE -->
+<!-- ============================================================ -->
+<section class="cmd-section" data-section="init" aria-labelledby="sec-init">
+  <div class="section-header">
+    <i class="ti ti-plus" style="color:var(--tag-init-t)" aria-hidden="true"></i>
+    <h2 id="sec-init">Init &amp; Clone</h2>
+    <span class="cmd-count"></span>
+  </div>
+  <div class="cmd-grid">
+
+    <article class="cmd-card" data-cat="init" data-search="git init initialize new repository create start">
+      <span class="cat-tag tag-init">Init</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-init);color:var(--tag-init-t)"><i class="ti ti-folder-plus" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git init</div>
+          <div class="cmd-tagline">Create a new repository</div>
+        </div>
+      </div>
+      <p class="cmd-body">Initializes a new Git repository by creating a <code>.git</code> subdirectory. This sets up the version-control infrastructure for any project from scratch.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--bare</span>
+        <span class="flag-chip">--initial-branch=&lt;name&gt;</span>
+        <span class="flag-chip">--quiet</span>
+      </div>
+      <div class="cmd-example">git init <span class="comment"># current directory</span><br>git init my-project <span class="comment"># new folder</span><br>git init --bare repo.git <span class="comment"># server-side</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>--bare repos have no working tree — ideal for shared servers.</span>
+        <button class="copy-btn" data-copy="git init"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="init" data-search="git clone download copy remote repository url">
+      <span class="cat-tag tag-init">Init</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-init);color:var(--tag-init-t)"><i class="ti ti-git-fork" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git clone</div>
+          <div class="cmd-tagline">Copy an existing repository</div>
+        </div>
+      </div>
+      <p class="cmd-body">Creates a full copy of a remote repository, including all history, branches, and tags. Automatically sets up the <code>origin</code> remote.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--depth=&lt;n&gt;</span>
+        <span class="flag-chip">--branch &lt;name&gt;</span>
+        <span class="flag-chip">--single-branch</span>
+        <span class="flag-chip">--recurse-submodules</span>
+      </div>
+      <div class="cmd-example">git clone https://github.com/user/repo.git<br>git clone --depth 1 &lt;url&gt; <span class="comment"># shallow clone</span><br>git clone -b main &lt;url&gt; my-dir</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>--depth 1 gives a fast shallow clone with only latest snapshot.</span>
+        <button class="copy-btn" data-copy="git clone <url>"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION: STAGING & SNAPSHOT -->
+<!-- ============================================================ -->
+<section class="cmd-section" data-section="snap" aria-labelledby="sec-snap">
+  <div class="section-header">
+    <i class="ti ti-camera" style="color:var(--tag-snap-t)" aria-hidden="true"></i>
+    <h2 id="sec-snap">Staging &amp; Snapshot</h2>
+    <span class="cmd-count"></span>
+  </div>
+  <div class="cmd-grid">
+
+    <article class="cmd-card" data-cat="snap" data-search="git add stage file track index">
+      <span class="cat-tag tag-snap">Stage</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-snap);color:var(--tag-snap-t)"><i class="ti ti-file-plus" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git add</div>
+          <div class="cmd-tagline">Stage changes for commit</div>
+        </div>
+      </div>
+      <p class="cmd-body">Moves changes from the working directory to the staging area (index). Gives you precise control over what goes into the next commit snapshot.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-A / --all</span>
+        <span class="flag-chip">-p / --patch</span>
+        <span class="flag-chip">-u</span>
+        <span class="flag-chip">-n / --dry-run</span>
+      </div>
+      <div class="cmd-example">git add README.md <span class="comment"># single file</span><br>git add . <span class="comment"># all in current dir</span><br>git add -p <span class="comment"># interactive patch mode</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Use -p to stage only specific hunks within a file.</span>
+        <button class="copy-btn" data-copy="git add ."><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="snap" data-search="git commit save record message history snapshot">
+      <span class="cat-tag tag-snap">Stage</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-snap);color:var(--tag-snap-t)"><i class="ti ti-git-commit" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git commit</div>
+          <div class="cmd-tagline">Record staged snapshot</div>
+        </div>
+      </div>
+      <p class="cmd-body">Records the staged changes as a new commit in the repository history. Each commit requires a message and creates an immutable snapshot with a unique SHA-1 hash.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-m "&lt;msg&gt;"</span>
+        <span class="flag-chip">-a</span>
+        <span class="flag-chip">--amend</span>
+        <span class="flag-chip">--no-edit</span>
+        <span class="flag-chip">-S</span>
+      </div>
+      <div class="cmd-example">git commit -m "feat: add login page"<br>git commit -am "fix: typo" <span class="comment"># add + commit</span><br>git commit --amend --no-edit <span class="comment"># fix last</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>--amend rewrites the last commit — never amend pushed commits.</span>
+        <button class="copy-btn" data-copy='git commit -m "your message"'><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="snap" data-search="git status show state modified untracked staged">
+      <span class="cat-tag tag-snap">Stage</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-snap);color:var(--tag-snap-t)"><i class="ti ti-report" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git status</div>
+          <div class="cmd-tagline">Show working tree state</div>
+        </div>
+      </div>
+      <p class="cmd-body">Displays the state of the working directory and staging area — which changes have been staged, which haven't, and which files aren't tracked.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-s / --short</span>
+        <span class="flag-chip">-b / --branch</span>
+        <span class="flag-chip">-u / --untracked</span>
+      </div>
+      <div class="cmd-example">git status <span class="comment"># full output</span><br>git status -s <span class="comment"># short format</span><br>git status -sb <span class="comment"># short + branch</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>XY codes in short mode: M=modified, A=added, ?=untracked.</span>
+        <button class="copy-btn" data-copy="git status"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="snap" data-search="git diff compare changes difference patch">
+      <span class="cat-tag tag-snap">Stage</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-snap);color:var(--tag-snap-t)"><i class="ti ti-git-diff" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git diff</div>
+          <div class="cmd-tagline">Show file differences</div>
+        </div>
+      </div>
+      <p class="cmd-body">Shows unstaged changes between your working directory and the index. Compare branches, commits, or specific files. Essential for reviewing before staging.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--staged</span>
+        <span class="flag-chip">--stat</span>
+        <span class="flag-chip">--name-only</span>
+        <span class="flag-chip">--word-diff</span>
+      </div>
+      <div class="cmd-example">git diff <span class="comment"># unstaged changes</span><br>git diff --staged <span class="comment"># staged vs last commit</span><br>git diff main feature-branch</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>--staged (or --cached) shows what will go into the next commit.</span>
+        <button class="copy-btn" data-copy="git diff --staged"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="snap" data-search="git rm remove delete file untrack">
+      <span class="cat-tag tag-snap">Stage</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-snap);color:var(--tag-snap-t)"><i class="ti ti-file-minus" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git rm</div>
+          <div class="cmd-tagline">Remove files from index</div>
+        </div>
+      </div>
+      <p class="cmd-body">Removes files from both the working tree and the staging index. Use <code>--cached</code> to stop tracking without deleting the local file.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--cached</span>
+        <span class="flag-chip">-r</span>
+        <span class="flag-chip">--force</span>
+        <span class="flag-chip">-n / --dry-run</span>
+      </div>
+      <div class="cmd-example">git rm file.txt <span class="comment"># delete + untrack</span><br>git rm --cached secret.env <span class="comment"># untrack only</span><br>git rm -r --cached node_modules/</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>After --cached, add the file to .gitignore to prevent re-tracking.</span>
+        <button class="copy-btn" data-copy="git rm --cached <file>"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="snap" data-search="git mv move rename file">
+      <span class="cat-tag tag-snap">Stage</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-snap);color:var(--tag-snap-t)"><i class="ti ti-arrows-move" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git mv</div>
+          <div class="cmd-tagline">Move or rename tracked files</div>
+        </div>
+      </div>
+      <p class="cmd-body">Moves or renames a file and stages the change in one step. Equivalent to <code>mv</code> + <code>git rm</code> + <code>git add</code> but Git tracks the rename properly.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-f / --force</span>
+        <span class="flag-chip">-n / --dry-run</span>
+      </div>
+      <div class="cmd-example">git mv old-name.txt new-name.txt<br>git mv src/utils.js lib/helpers.js</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Git detects renames in logs even if you use plain <code>mv</code> + <code>add</code>.</span>
+        <button class="copy-btn" data-copy="git mv <old> <new>"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="snap" data-search="git stash shelve work in progress save temporarily">
+      <span class="cat-tag tag-snap">Stage</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-snap);color:var(--tag-snap-t)"><i class="ti ti-archive" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git stash</div>
+          <div class="cmd-tagline">Shelve uncommitted work</div>
+        </div>
+      </div>
+      <p class="cmd-body">Temporarily stores modified tracked files, giving you a clean working directory. Useful when switching context without committing incomplete work.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">push -m "&lt;msg&gt;"</span>
+        <span class="flag-chip">pop</span>
+        <span class="flag-chip">apply</span>
+        <span class="flag-chip">list</span>
+        <span class="flag-chip">drop</span>
+        <span class="flag-chip">--include-untracked</span>
+      </div>
+      <div class="cmd-example">git stash push -m "wip: login form"<br>git stash list <span class="comment"># see all stashes</span><br>git stash pop <span class="comment"># restore latest</span><br>git stash apply stash@{2}</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>pop = apply + drop. Use apply to keep the stash entry intact.</span>
+        <button class="copy-btn" data-copy='git stash push -m "wip"'><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="snap" data-search="git tag release label version annotated lightweight">
+      <span class="cat-tag tag-snap">Stage</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-snap);color:var(--tag-snap-t)"><i class="ti ti-tag" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git tag</div>
+          <div class="cmd-tagline">Mark a specific commit</div>
+        </div>
+      </div>
+      <p class="cmd-body">Creates a named reference to a specific commit, typically for marking release points. Annotated tags are full objects with messages; lightweight tags are simple pointers.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-a</span>
+        <span class="flag-chip">-m "&lt;msg&gt;"</span>
+        <span class="flag-chip">-l</span>
+        <span class="flag-chip">-d</span>
+        <span class="flag-chip">--sort=-version:refname</span>
+      </div>
+      <div class="cmd-example">git tag v1.0.0 <span class="comment"># lightweight</span><br>git tag -a v2.0.0 -m "Release 2.0"<br>git tag -l "v*" <span class="comment"># list all v* tags</span><br>git push origin --tags</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Tags are not pushed by default — always use <code>git push --tags</code>.</span>
+        <button class="copy-btn" data-copy='git tag -a v1.0.0 -m "Release v1.0.0"'><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION: BRANCHING -->
+<!-- ============================================================ -->
+<section class="cmd-section" data-section="branch" aria-labelledby="sec-branch">
+  <div class="section-header">
+    <i class="ti ti-git-branch" style="color:var(--tag-branch-t)" aria-hidden="true"></i>
+    <h2 id="sec-branch">Branching</h2>
+    <span class="cmd-count"></span>
+  </div>
+  <div class="cmd-grid">
+
+    <article class="cmd-card" data-cat="branch" data-search="git branch create list delete switch">
+      <span class="cat-tag tag-branch">Branch</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-branch);color:var(--tag-branch-t)"><i class="ti ti-git-branch" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git branch</div>
+          <div class="cmd-tagline">List, create, delete branches</div>
+        </div>
+      </div>
+      <p class="cmd-body">Manages branches in the repository. Branches are lightweight movable pointers to commits that enable parallel development without affecting the main codebase.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-a</span>
+        <span class="flag-chip">-d / -D</span>
+        <span class="flag-chip">-m</span>
+        <span class="flag-chip">-r</span>
+        <span class="flag-chip">--merged</span>
+        <span class="flag-chip">--no-merged</span>
+      </div>
+      <div class="cmd-example">git branch <span class="comment"># list local branches</span><br>git branch feature/login <span class="comment"># create</span><br>git branch -d feature/login <span class="comment"># safe delete</span><br>git branch -m old-name new-name</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>-D force-deletes; use only when -d warns about unmerged commits.</span>
+        <button class="copy-btn" data-copy="git branch -a"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="branch" data-search="git checkout switch branch file restore head">
+      <span class="cat-tag tag-branch">Branch</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-branch);color:var(--tag-branch-t)"><i class="ti ti-transfer" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git checkout</div>
+          <div class="cmd-tagline">Switch branches or restore files</div>
+        </div>
+      </div>
+      <p class="cmd-body">Switches the working directory to a different branch or restores working tree files. The classic multi-purpose command — split into <code>git switch</code> and <code>git restore</code> in newer Git.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-b &lt;branch&gt;</span>
+        <span class="flag-chip">--</span>
+        <span class="flag-chip">-t / --track</span>
+        <span class="flag-chip">--orphan</span>
+      </div>
+      <div class="cmd-example">git checkout main <span class="comment"># switch branch</span><br>git checkout -b feature/api <span class="comment"># create + switch</span><br>git checkout -- file.txt <span class="comment"># discard changes</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Prefer <code>git switch</code> (Git 2.23+) for clarity — it only changes branches.</span>
+        <button class="copy-btn" data-copy="git checkout -b feature/my-feature"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="branch" data-search="git switch change branch modern new">
+      <span class="cat-tag tag-branch">Branch</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-branch);color:var(--tag-branch-t)"><i class="ti ti-arrows-left-right" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git switch</div>
+          <div class="cmd-tagline">Switch branches (Git 2.23+)</div>
+        </div>
+      </div>
+      <p class="cmd-body">The modern, dedicated command for changing branches. Clearer than <code>git checkout</code> — it only switches branches and cannot accidentally modify files.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-c &lt;branch&gt;</span>
+        <span class="flag-chip">--detach</span>
+        <span class="flag-chip">-</span>
+      </div>
+      <div class="cmd-example">git switch main <span class="comment"># switch</span><br>git switch -c feature/dashboard <span class="comment"># create + switch</span><br>git switch - <span class="comment"># back to previous branch</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i><code>git switch -</code> is a quick toggle between the last two branches.</span>
+        <button class="copy-btn" data-copy="git switch -c feature/my-feature"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION: MERGE & REBASE -->
+<!-- ============================================================ -->
+<section class="cmd-section" data-section="merge" aria-labelledby="sec-merge">
+  <div class="section-header">
+    <i class="ti ti-git-merge" style="color:var(--tag-merge-t)" aria-hidden="true"></i>
+    <h2 id="sec-merge">Merge &amp; Rebase</h2>
+    <span class="cmd-count"></span>
+  </div>
+  <div class="cmd-grid">
+
+    <article class="cmd-card" data-cat="merge" data-search="git merge combine integrate branch fast-forward">
+      <span class="cat-tag tag-merge">Merge</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-merge);color:var(--tag-merge-t)"><i class="ti ti-git-merge" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git merge</div>
+          <div class="cmd-tagline">Integrate branch histories</div>
+        </div>
+      </div>
+      <p class="cmd-body">Combines the history of two branches. Creates a merge commit that preserves both branch histories. Fast-forward merges occur when no diverging commits exist.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--no-ff</span>
+        <span class="flag-chip">--ff-only</span>
+        <span class="flag-chip">--squash</span>
+        <span class="flag-chip">--abort</span>
+        <span class="flag-chip">--strategy=&lt;s&gt;</span>
+      </div>
+      <div class="cmd-example">git merge feature/login <span class="comment"># fast-forward</span><br>git merge --no-ff feature/api <span class="comment"># force merge commit</span><br>git merge --squash feature <span class="comment"># squash all commits</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>--no-ff preserves feature branch topology in history.</span>
+        <button class="copy-btn" data-copy="git merge --no-ff feature/my-branch"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="merge" data-search="git rebase replay linearize history commit">
+      <span class="cat-tag tag-merge">Merge</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-merge);color:var(--tag-merge-t)"><i class="ti ti-git-cherry-pick" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git rebase</div>
+          <div class="cmd-tagline">Reapply commits on new base</div>
+        </div>
+      </div>
+      <p class="cmd-body">Moves or combines a sequence of commits to a new base commit, creating a linear project history. More powerful (and riskier) than merging for cleanup.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-i / --interactive</span>
+        <span class="flag-chip">--onto &lt;base&gt;</span>
+        <span class="flag-chip">--abort</span>
+        <span class="flag-chip">--continue</span>
+        <span class="flag-chip">--skip</span>
+      </div>
+      <div class="cmd-example">git rebase main <span class="comment"># rebase onto main</span><br>git rebase -i HEAD~3 <span class="comment"># interactive, last 3</span><br>git rebase --abort <span class="comment"># cancel</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Never rebase commits already pushed to shared branches.</span>
+        <button class="copy-btn" data-copy="git rebase -i HEAD~3"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="merge" data-search="git cherry-pick apply commit specific">
+      <span class="cat-tag tag-merge">Merge</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-merge);color:var(--tag-merge-t)"><i class="ti ti-cherry" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git cherry-pick</div>
+          <div class="cmd-tagline">Apply specific commits</div>
+        </div>
+      </div>
+      <p class="cmd-body">Applies the changes introduced by specific commits onto the current branch. Useful for backporting fixes or selectively applying changes across branches.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-n / --no-commit</span>
+        <span class="flag-chip">-e</span>
+        <span class="flag-chip">--abort</span>
+        <span class="flag-chip">--continue</span>
+        <span class="flag-chip">&lt;hash&gt;..&lt;hash&gt;</span>
+      </div>
+      <div class="cmd-example">git cherry-pick a1b2c3d <span class="comment"># single commit</span><br>git cherry-pick a1b..e5f <span class="comment"># range</span><br>git cherry-pick -n abc123 <span class="comment"># without committing</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Creates a new commit with the same changes but a different SHA.</span>
+        <button class="copy-btn" data-copy="git cherry-pick <commit-hash>"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION: REMOTE -->
+<!-- ============================================================ -->
+<section class="cmd-section" data-section="remote" aria-labelledby="sec-remote">
+  <div class="section-header">
+    <i class="ti ti-cloud-upload" style="color:var(--tag-remote-t)" aria-hidden="true"></i>
+    <h2 id="sec-remote">Remote Operations</h2>
+    <span class="cmd-count"></span>
+  </div>
+  <div class="cmd-grid">
+
+    <article class="cmd-card" data-cat="remote" data-search="git remote add origin url server">
+      <span class="cat-tag tag-remote">Remote</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-remote);color:var(--tag-remote-t)"><i class="ti ti-server" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git remote</div>
+          <div class="cmd-tagline">Manage remote connections</div>
+        </div>
+      </div>
+      <p class="cmd-body">Manages the set of remotes (other repositories) whose branches you track. <code>origin</code> is the conventional name for the primary remote repository.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">add &lt;name&gt; &lt;url&gt;</span>
+        <span class="flag-chip">remove</span>
+        <span class="flag-chip">rename</span>
+        <span class="flag-chip">-v</span>
+        <span class="flag-chip">set-url</span>
+      </div>
+      <div class="cmd-example">git remote -v <span class="comment"># list with URLs</span><br>git remote add origin https://github.com/user/repo.git<br>git remote set-url origin &lt;new-url&gt;</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>A repo can have multiple remotes — useful for open-source forks.</span>
+        <button class="copy-btn" data-copy="git remote -v"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="remote" data-search="git fetch download remote update tracking branch">
+      <span class="cat-tag tag-remote">Remote</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-remote);color:var(--tag-remote-t)"><i class="ti ti-cloud-download" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git fetch</div>
+          <div class="cmd-tagline">Download without integrating</div>
+        </div>
+      </div>
+      <p class="cmd-body">Downloads objects and refs from a remote repository into your local tracking branches, but does not merge them. Safe to run at any time — never modifies your working directory.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--all</span>
+        <span class="flag-chip">--prune</span>
+        <span class="flag-chip">--tags</span>
+        <span class="flag-chip">--depth=&lt;n&gt;</span>
+      </div>
+      <div class="cmd-example">git fetch origin <span class="comment"># fetch from origin</span><br>git fetch --all --prune <span class="comment"># all remotes + clean</span><br>git fetch origin main</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>--prune removes local tracking branches for deleted remotes.</span>
+        <button class="copy-btn" data-copy="git fetch --all --prune"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="remote" data-search="git pull fetch merge integrate remote">
+      <span class="cat-tag tag-remote">Remote</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-remote);color:var(--tag-remote-t)"><i class="ti ti-git-pull-request" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git pull</div>
+          <div class="cmd-tagline">Fetch and integrate</div>
+        </div>
+      </div>
+      <p class="cmd-body">Fetches from a remote and immediately merges (or rebases) into the current branch. Essentially <code>git fetch</code> + <code>git merge</code> in one step.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--rebase</span>
+        <span class="flag-chip">--ff-only</span>
+        <span class="flag-chip">--no-commit</span>
+        <span class="flag-chip">--squash</span>
+      </div>
+      <div class="cmd-example">git pull origin main <span class="comment"># fetch + merge</span><br>git pull --rebase <span class="comment"># rebase instead</span><br>git pull --ff-only <span class="comment"># fail if not FF</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>--rebase keeps a cleaner linear history vs merge commits.</span>
+        <button class="copy-btn" data-copy="git pull --rebase origin main"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="remote" data-search="git push upload send share publish remote">
+      <span class="cat-tag tag-remote">Remote</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-remote);color:var(--tag-remote-t)"><i class="ti ti-cloud-upload" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git push</div>
+          <div class="cmd-tagline">Upload local commits</div>
+        </div>
+      </div>
+      <p class="cmd-body">Uploads local branch commits to the remote repository branch. Transfers the history and updates the remote ref. Fails if the remote has diverged.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-u / --set-upstream</span>
+        <span class="flag-chip">--force-with-lease</span>
+        <span class="flag-chip">--tags</span>
+        <span class="flag-chip">--delete</span>
+        <span class="flag-chip">--dry-run</span>
+      </div>
+      <div class="cmd-example">git push origin main <span class="comment"># push to remote</span><br>git push -u origin feature <span class="comment"># set tracking</span><br>git push --force-with-lease <span class="comment"># safe force</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>--force-with-lease is safer than --force: fails if remote changed.</span>
+        <button class="copy-btn" data-copy="git push -u origin main"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION: UNDO -->
+<!-- ============================================================ -->
+<section class="cmd-section" data-section="undo" aria-labelledby="sec-undo">
+  <div class="section-header">
+    <i class="ti ti-arrow-back-up" style="color:var(--tag-undo-t)" aria-hidden="true"></i>
+    <h2 id="sec-undo">Undo &amp; Fix</h2>
+    <span class="cmd-count"></span>
+  </div>
+  <div class="cmd-grid">
+
+    <article class="cmd-card" data-cat="undo" data-search="git reset undo unstage soft mixed hard head">
+      <span class="cat-tag tag-undo">Undo</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-undo);color:var(--tag-undo-t)"><i class="ti ti-arrow-back-up" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git reset</div>
+          <div class="cmd-tagline">Reset HEAD to a state</div>
+        </div>
+      </div>
+      <p class="cmd-body">Moves HEAD and optionally the index/working tree to a specified state. Three modes: --soft (keep staged), --mixed (unstage, keep files), --hard (discard everything).</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--soft</span>
+        <span class="flag-chip">--mixed</span>
+        <span class="flag-chip">--hard</span>
+        <span class="flag-chip">HEAD~&lt;n&gt;</span>
+        <span class="flag-chip">&lt;commit&gt;</span>
+      </div>
+      <div class="cmd-example">git reset --soft HEAD~1 <span class="comment"># undo commit, keep staged</span><br>git reset HEAD~1 <span class="comment"># unstage (mixed default)</span><br>git reset --hard HEAD~1 <span class="comment"># ⚠ discard all</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>--hard is destructive and permanent. Back up or use reflog to recover.</span>
+        <button class="copy-btn" data-copy="git reset --soft HEAD~1"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="undo" data-search="git revert create inverse commit undo safe">
+      <span class="cat-tag tag-undo">Undo</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-undo);color:var(--tag-undo-t)"><i class="ti ti-rotate-2" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git revert</div>
+          <div class="cmd-tagline">Safely undo a pushed commit</div>
+        </div>
+      </div>
+      <p class="cmd-body">Creates a new commit that undoes the changes from a specified commit. Unlike reset, it's safe for shared/public branches because it adds rather than removes history.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--no-commit</span>
+        <span class="flag-chip">-e / --edit</span>
+        <span class="flag-chip">-n</span>
+      </div>
+      <div class="cmd-example">git revert abc1234 <span class="comment"># revert one commit</span><br>git revert HEAD~3..HEAD <span class="comment"># revert range</span><br>git revert --no-commit abc1234</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Prefer revert over reset for anything already pushed to shared branches.</span>
+        <button class="copy-btn" data-copy="git revert HEAD"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="undo" data-search="git restore discard working tree file changes">
+      <span class="cat-tag tag-undo">Undo</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-undo);color:var(--tag-undo-t)"><i class="ti ti-refresh" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git restore</div>
+          <div class="cmd-tagline">Restore working tree files (Git 2.23+)</div>
+        </div>
+      </div>
+      <p class="cmd-body">Restores files in the working tree from the index or a commit. The modern replacement for <code>git checkout -- &lt;file&gt;</code>. Use <code>--staged</code> to unstage files.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--staged</span>
+        <span class="flag-chip">--source=&lt;tree&gt;</span>
+        <span class="flag-chip">-W / --worktree</span>
+      </div>
+      <div class="cmd-example">git restore file.txt <span class="comment"># discard changes</span><br>git restore --staged file.txt <span class="comment"># unstage</span><br>git restore --source HEAD~2 file.txt</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>--staged unstages without discarding the working tree changes.</span>
+        <button class="copy-btn" data-copy="git restore --staged <file>"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="undo" data-search="git clean untracked files delete remove working directory">
+      <span class="cat-tag tag-undo">Undo</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-undo);color:var(--tag-undo-t)"><i class="ti ti-trash" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git clean</div>
+          <div class="cmd-tagline">Remove untracked files</div>
+        </div>
+      </div>
+      <p class="cmd-body">Removes untracked files from the working directory. Useful for cleaning build artifacts, generated files, or anything not under version control.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-f / --force</span>
+        <span class="flag-chip">-d</span>
+        <span class="flag-chip">-n / --dry-run</span>
+        <span class="flag-chip">-x</span>
+        <span class="flag-chip">-i</span>
+      </div>
+      <div class="cmd-example">git clean -n <span class="comment"># preview what'd be removed</span><br>git clean -fd <span class="comment"># force + directories</span><br>git clean -fdx <span class="comment"># include .gitignored</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Always run -n (dry-run) first — clean is irreversible.</span>
+        <button class="copy-btn" data-copy="git clean -fd"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION: INSPECT & LOG -->
+<!-- ============================================================ -->
+<section class="cmd-section" data-section="inspect" aria-labelledby="sec-inspect">
+  <div class="section-header">
+    <i class="ti ti-eye" style="color:var(--tag-inspect-t)" aria-hidden="true"></i>
+    <h2 id="sec-inspect">Inspect &amp; Log</h2>
+    <span class="cmd-count"></span>
+  </div>
+  <div class="cmd-grid">
+
+    <article class="cmd-card" data-cat="inspect" data-search="git log history commits show format oneline graph">
+      <span class="cat-tag tag-inspect">Inspect</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-inspect);color:var(--tag-inspect-t)"><i class="ti ti-list" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git log</div>
+          <div class="cmd-tagline">Browse commit history</div>
+        </div>
+      </div>
+      <p class="cmd-body">Shows the commit history for the current branch. Highly customizable with format strings, filtering by author/date/file, and graph display. One of the most-used inspection tools.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--oneline</span>
+        <span class="flag-chip">--graph</span>
+        <span class="flag-chip">--all</span>
+        <span class="flag-chip">--author=&lt;name&gt;</span>
+        <span class="flag-chip">-n &lt;limit&gt;</span>
+        <span class="flag-chip">--since / --until</span>
+      </div>
+      <div class="cmd-example">git log --oneline --graph --all<br>git log -n 10 --author="Ada"<br>git log --since="2 weeks ago" --stat</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Alias <code>git lg</code> to --oneline --graph --decorate --all for daily use.</span>
+        <button class="copy-btn" data-copy="git log --oneline --graph --all"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="inspect" data-search="git show object commit blob tree display">
+      <span class="cat-tag tag-inspect">Inspect</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-inspect);color:var(--tag-inspect-t)"><i class="ti ti-file-search" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git show</div>
+          <div class="cmd-tagline">Show object details</div>
+        </div>
+      </div>
+      <p class="cmd-body">Displays information about a Git object — commit changes, tag messages, tree contents, or blob data. For commits, shows the diff introduced by that commit.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--stat</span>
+        <span class="flag-chip">--name-only</span>
+        <span class="flag-chip">--format=&lt;fmt&gt;</span>
+        <span class="flag-chip">-s</span>
+      </div>
+      <div class="cmd-example">git show abc1234 <span class="comment"># show commit diff</span><br>git show HEAD:src/app.js <span class="comment"># file at commit</span><br>git show v2.0.0 <span class="comment"># show tag info</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i><code>HEAD:path</code> syntax shows a file as it was at any commit.</span>
+        <button class="copy-btn" data-copy="git show HEAD"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="inspect" data-search="git blame who when line author annotate file">
+      <span class="cat-tag tag-inspect">Inspect</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-inspect);color:var(--tag-inspect-t)"><i class="ti ti-user-search" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git blame</div>
+          <div class="cmd-tagline">Show line-by-line authorship</div>
+        </div>
+      </div>
+      <p class="cmd-body">Annotates each line of a file showing which commit and author last modified it. Invaluable for tracking when and why specific lines changed — not for blame, but for context.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-L &lt;start,end&gt;</span>
+        <span class="flag-chip">-C</span>
+        <span class="flag-chip">-w</span>
+        <span class="flag-chip">--since=&lt;date&gt;</span>
+      </div>
+      <div class="cmd-example">git blame README.md<br>git blame -L 10,25 app.js <span class="comment"># lines 10–25</span><br>git blame -w -C src/utils.js</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>-C detects lines moved/copied from other files in the same commit.</span>
+        <button class="copy-btn" data-copy="git blame <file>"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="inspect" data-search="git reflog recover lost commits history operations">
+      <span class="cat-tag tag-inspect">Inspect</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-inspect);color:var(--tag-inspect-t)"><i class="ti ti-history" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git reflog</div>
+          <div class="cmd-tagline">Local operations log</div>
+        </div>
+      </div>
+      <p class="cmd-body">Records when the tip of branches and other references were updated. Your safety net — lets you recover commits lost from reset, rebase, or deleted branches.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--all</span>
+        <span class="flag-chip">--date=relative</span>
+        <span class="flag-chip">expire</span>
+        <span class="flag-chip">delete</span>
+      </div>
+      <div class="cmd-example">git reflog <span class="comment"># all recent HEAD changes</span><br>git reflog --all --date=relative<br>git reset --hard HEAD@{3} <span class="comment"># go back</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Reflog entries expire after 90 days. Always your first recovery tool.</span>
+        <button class="copy-btn" data-copy="git reflog --all"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="inspect" data-search="git grep search content find string pattern codebase">
+      <span class="cat-tag tag-inspect">Inspect</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-inspect);color:var(--tag-inspect-t)"><i class="ti ti-search" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git grep</div>
+          <div class="cmd-tagline">Search tracked files</div>
+        </div>
+      </div>
+      <p class="cmd-body">Searches through the content of tracked files using patterns, much like Unix <code>grep</code> but Git-aware. Can search across commits, branches, and the index — not just working tree.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-n</span>
+        <span class="flag-chip">-i</span>
+        <span class="flag-chip">-l</span>
+        <span class="flag-chip">-c</span>
+        <span class="flag-chip">-E</span>
+      </div>
+      <div class="cmd-example">git grep "TODO" <span class="comment"># search working tree</span><br>git grep -n "function login"<br>git grep "console.log" HEAD~5</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Faster than <code>grep -r</code> because it only searches tracked files.</span>
+        <button class="copy-btn" data-copy='git grep -n "search term"'><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="inspect" data-search="git shortlog summarize count author log">
+      <span class="cat-tag tag-inspect">Inspect</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-inspect);color:var(--tag-inspect-t)"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git shortlog</div>
+          <div class="cmd-tagline">Summarize commit history</div>
+        </div>
+      </div>
+      <p class="cmd-body">Groups commits by author with a count and list of subject lines. Ideal for generating changelogs and contributor summaries for releases.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">-s</span>
+        <span class="flag-chip">-n</span>
+        <span class="flag-chip">-e</span>
+        <span class="flag-chip">--no-merges</span>
+      </div>
+      <div class="cmd-example">git shortlog -sn <span class="comment"># ranked contributors</span><br>git shortlog -sne HEAD~20..HEAD<br>git shortlog --no-merges</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>-sn gives a ranked leaderboard of contributors by commit count.</span>
+        <button class="copy-btn" data-copy="git shortlog -sn"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION: ADVANCED -->
+<!-- ============================================================ -->
+<section class="cmd-section" data-section="advanced" aria-labelledby="sec-advanced">
+  <div class="section-header">
+    <i class="ti ti-wand" style="color:var(--tag-advanced-t)" aria-hidden="true"></i>
+    <h2 id="sec-advanced">Advanced</h2>
+    <span class="cmd-count"></span>
+  </div>
+  <div class="cmd-grid">
+
+    <article class="cmd-card" data-cat="advanced" data-search="git bisect find bug commit binary search debug">
+      <span class="cat-tag tag-advanced">Advanced</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-advanced);color:var(--tag-advanced-t)"><i class="ti ti-bug" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git bisect</div>
+          <div class="cmd-tagline">Binary search for bugs</div>
+        </div>
+      </div>
+      <p class="cmd-body">Uses binary search to find the commit that introduced a bug. You mark commits as good or bad; Git checks out the midpoint until it isolates the culprit. Can be automated with a test script.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">start</span>
+        <span class="flag-chip">good &lt;hash&gt;</span>
+        <span class="flag-chip">bad &lt;hash&gt;</span>
+        <span class="flag-chip">run &lt;script&gt;</span>
+        <span class="flag-chip">reset</span>
+      </div>
+      <div class="cmd-example">git bisect start<br>git bisect bad HEAD<br>git bisect good v2.0.0<br>git bisect run npm test <span class="comment"># automate</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Automated bisect via <code>run</code> can test thousands of commits hands-free.</span>
+        <button class="copy-btn" data-copy="git bisect start && git bisect bad HEAD && git bisect good <known-good>"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="advanced" data-search="git submodule nested repo dependency embedded">
+      <span class="cat-tag tag-advanced">Advanced</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-advanced);color:var(--tag-advanced-t)"><i class="ti ti-folders" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git submodule</div>
+          <div class="cmd-tagline">Embed repos within repos</div>
+        </div>
+      </div>
+      <p class="cmd-body">Allows you to keep a Git repo as a subdirectory of another repo. Useful for including libraries as tracked dependencies. Each submodule points to a specific commit in the child repo.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">add &lt;url&gt;</span>
+        <span class="flag-chip">update --init --recursive</span>
+        <span class="flag-chip">foreach</span>
+        <span class="flag-chip">status</span>
+      </div>
+      <div class="cmd-example">git submodule add https://github.com/org/lib.git lib<br>git submodule update --init --recursive<br>git submodule foreach git pull</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>After cloning a parent repo, always run <code>update --init --recursive</code>.</span>
+        <button class="copy-btn" data-copy="git submodule update --init --recursive"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="advanced" data-search="git worktree multiple working directory checkout parallel">
+      <span class="cat-tag tag-advanced">Advanced</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-advanced);color:var(--tag-advanced-t)"><i class="ti ti-layout-columns" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git worktree</div>
+          <div class="cmd-tagline">Multiple working directories</div>
+        </div>
+      </div>
+      <p class="cmd-body">Creates additional working trees linked to the same repository. Lets you check out multiple branches simultaneously without stashing — perfect for comparing or hotfixing while in the middle of work.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">add &lt;path&gt; &lt;branch&gt;</span>
+        <span class="flag-chip">list</span>
+        <span class="flag-chip">remove</span>
+        <span class="flag-chip">prune</span>
+      </div>
+      <div class="cmd-example">git worktree add ../hotfix-1.2 hotfix/1.2<br>git worktree list<br>git worktree remove ../hotfix-1.2</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Each worktree is a separate directory but shares the same .git history.</span>
+        <button class="copy-btn" data-copy="git worktree add ../my-worktree <branch>"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="advanced" data-search="git filter-branch rewrite history large file remove secret">
+      <span class="cat-tag tag-advanced">Advanced</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-advanced);color:var(--tag-advanced-t)"><i class="ti ti-filter" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git filter-repo</div>
+          <div class="cmd-tagline">Rewrite repository history</div>
+        </div>
+      </div>
+      <p class="cmd-body">The recommended tool (replacing filter-branch) for rewriting Git history at scale — remove large files, strip secrets, split or merge repos. Requires separate install but is dramatically faster.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--path &lt;file&gt;</span>
+        <span class="flag-chip">--invert-paths</span>
+        <span class="flag-chip">--path-rename</span>
+        <span class="flag-chip">--mailmap</span>
+      </div>
+      <div class="cmd-example">git filter-repo --path secret.env --invert-paths<br>git filter-repo --path src/ <span class="comment"># keep only src/</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>After history rewrite, all collaborators must reclone. Force-push required.</span>
+        <button class="copy-btn" data-copy="git filter-repo --path <file> --invert-paths"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="advanced" data-search="git archive export zip tar bundle snapshot release">
+      <span class="cat-tag tag-advanced">Advanced</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-advanced);color:var(--tag-advanced-t)"><i class="ti ti-package" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git archive</div>
+          <div class="cmd-tagline">Export a snapshot as archive</div>
+        </div>
+      </div>
+      <p class="cmd-body">Creates a tar or zip archive of a specific tree or commit. Unlike cloning, the output contains only the file tree without any Git metadata — perfect for deployment artifacts.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--format=zip</span>
+        <span class="flag-chip">--prefix=&lt;dir&gt;/</span>
+        <span class="flag-chip">--output=&lt;file&gt;</span>
+        <span class="flag-chip">--remote=&lt;url&gt;</span>
+      </div>
+      <div class="cmd-example">git archive --format=zip HEAD &gt; release.zip<br>git archive --prefix=project/ -o v1.tar.gz v1.0.0</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Use export-subst in .gitattributes to embed metadata in archived files.</span>
+        <button class="copy-btn" data-copy="git archive --format=zip HEAD > release.zip"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="advanced" data-search="git gc garbage collect optimize pack clean repository">
+      <span class="cat-tag tag-advanced">Advanced</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-advanced);color:var(--tag-advanced-t)"><i class="ti ti-recycle" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git gc</div>
+          <div class="cmd-tagline">Garbage collect &amp; optimize</div>
+        </div>
+      </div>
+      <p class="cmd-body">Runs a number of housekeeping tasks — packs loose objects, prunes unreachable objects, compresses pack files, and optimizes the repository for speed and size.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">--aggressive</span>
+        <span class="flag-chip">--prune=now</span>
+        <span class="flag-chip">--auto</span>
+        <span class="flag-chip">--quiet</span>
+      </div>
+      <div class="cmd-example">git gc <span class="comment"># standard cleanup</span><br>git gc --aggressive <span class="comment"># deep optimization</span><br>git gc --prune=now <span class="comment"># remove all loose objs</span></div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Run periodically on large repos; --aggressive takes much longer but compresses better.</span>
+        <button class="copy-btn" data-copy="git gc --prune=now"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="advanced" data-search="git bundle offline transport backup single file">
+      <span class="cat-tag tag-advanced">Advanced</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-advanced);color:var(--tag-advanced-t)"><i class="ti ti-file-zip" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git bundle</div>
+          <div class="cmd-tagline">Pack repo into a single file</div>
+        </div>
+      </div>
+      <p class="cmd-body">Packages a repository's objects and refs into a single binary file. Useful for offline transfer, backups, or sharing when network access to the remote isn't available.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">create &lt;file&gt;</span>
+        <span class="flag-chip">verify</span>
+        <span class="flag-chip">unbundle</span>
+        <span class="flag-chip">list-heads</span>
+      </div>
+      <div class="cmd-example">git bundle create repo.bundle --all<br>git clone repo.bundle my-repo<br>git bundle verify repo.bundle</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>A bundle can be cloned from directly: <code>git clone repo.bundle</code>.</span>
+        <button class="copy-btn" data-copy="git bundle create repo.bundle --all"><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+    <article class="cmd-card" data-cat="advanced" data-search="git notes attach metadata annotation message commit extra">
+      <span class="cat-tag tag-advanced">Advanced</span>
+      <div class="cmd-header">
+        <div class="cmd-icon-wrap" style="background:var(--tag-advanced);color:var(--tag-advanced-t)"><i class="ti ti-note" aria-hidden="true"></i></div>
+        <div class="cmd-title-group">
+          <div class="cmd-name">git notes</div>
+          <div class="cmd-tagline">Attach extra metadata to commits</div>
+        </div>
+      </div>
+      <p class="cmd-body">Adds, removes, or reads notes attached to objects in the repository. Notes are like sticky annotations on commits without modifying the commit itself — useful for CI results or review status.</p>
+      <div class="cmd-flags">
+        <span class="flag-chip">add -m "&lt;msg&gt;"</span>
+        <span class="flag-chip">show</span>
+        <span class="flag-chip">remove</span>
+        <span class="flag-chip">list</span>
+      </div>
+      <div class="cmd-example">git notes add -m "Reviewed by: Ada" HEAD<br>git notes show HEAD<br>git push origin refs/notes/commits</div>
+      <div class="cmd-footer">
+        <span class="cmd-tip"><i class="ti ti-bulb" aria-hidden="true"></i>Notes are stored in refs/notes and must be explicitly fetched/pushed.</span>
+        <button class="copy-btn" data-copy='git notes add -m "Note message" HEAD'><i class="ti ti-copy" aria-hidden="true"></i>Copy</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>GitDeck — Built from the <a href="https://git-scm.com/docs" target="_blank" rel="noopener noreferrer">official Git documentation</a>. A quick reference for every developer.</p>
+  <div class="footer-links">
+    <a href="https://git-scm.com/docs" target="_blank" rel="noopener noreferrer"><i class="ti ti-book" aria-hidden="true"></i> Official Docs</a>
+    <a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener noreferrer"><i class="ti ti-books" aria-hidden="true"></i> Pro Git Book</a>
+    <a href="https://education.github.com/git-cheat-sheet-education.pdf" target="_blank" rel="noopener noreferrer"><i class="ti ti-file-download" aria-hidden="true"></i> GitHub Cheat Sheet</a>
+    <a href="https://www.atlassian.com/git/tutorials" target="_blank" rel="noopener noreferrer"><i class="ti ti-school" aria-hidden="true"></i> Atlassian Tutorials</a>
+  </div>
+  <p style="margin-top:1rem;font-size:12px;opacity:0.6">Git is free and open-source software distributed under the GPL-2.0 license. GitDeck is an independent reference guide.</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="back-top" aria-label="Back to top"><i class="ti ti-chevron-up" aria-hidden="true"></i></button>
+
+<script src="main.js"></script>
+</body>
+</html>
