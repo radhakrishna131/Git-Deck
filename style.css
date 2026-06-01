@@ -78,7 +78,8 @@ body {
   font-family: 'Sora', -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
-  font-size: 15px;
+  font-size: 12px;
+  -webkit-text-size-adjust: 100%;
   line-height: 1.65;
   min-height: 100vh;
   transition: background 0.25s, color 0.25s;
